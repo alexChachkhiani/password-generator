@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import './App.css'
 
 export default function App() {
+
+  const [length, setLength] = useState(10)
 
   const checkboxData = [
     { title: "Include Upperase Letters", state: false },
@@ -18,14 +21,14 @@ export default function App() {
         <div className="character-length">
           <span>
             <label>Character Length</label>
-            <label>4</label>
+            <label>{length}</label>
           </span>
           <input 
           type="range" 
-          min="5"
-          max="20"
-          // value={}
-          // onChange={} 
+          min="8"
+          max="25"
+          value={length}
+          onChange={(event) => setLength(event.target.value)} 
           />
         </div>
         <div className="checkboxes">
