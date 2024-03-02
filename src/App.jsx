@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css'
+import usePasswordGenerator from './hooks/usePasswordGenerator';
 
 export default function App() {
 
@@ -19,12 +20,14 @@ export default function App() {
       setCheckboxData(updatedCheckboxData)
     }
 
+    const {password, errorMesage, generatePassword} = usePasswordGenerator()
+
   return (
       <div className="container">
-        <div className="header">
-          <div className="title">K6bd@ay^bo67</div>
+        {password && <div className="header">
+          <div className="title">{password}</div>
           <button className="copy-btn" onClick={() => {}}>Copy</button>
-        </div>
+        </div>}
         <div className="character-length">
           <span>
             <label>Character Length</label>
@@ -46,7 +49,10 @@ export default function App() {
             </div>
           })}
         </div>
-        <button className="generate-btn">generate Button</button>
+
+        {errorMesage && <div className="error-message">{errorMesage}</div>}
+
+        <button className="generate-btn" onClick={() => generatePassword(checkboxData, length)}>Generate Button</button>
       </div>
   )
 }
