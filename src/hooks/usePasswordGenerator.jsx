@@ -27,9 +27,9 @@ const usePasswordGenerator = () => {
                 case "Include Numbers":
                     charSet += "0123456789"
                     break;
-                // case "Include Symbols":
-                //     charSet =+ "!"
-                //     break;
+                case "Include Symbols":
+                    charSet += "~`!@#£€$¢¥§%°&*()-_+={}[]|/:;'<>,.?" + '"'
+                    break;
                 default:
                     break;
             }
