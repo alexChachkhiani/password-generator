@@ -13,11 +13,21 @@ export default function App() {
       { title: "Include Symbols", state: false }
     ]
   )
+  const [copied, setCopied] = useState(false)
 
     const handleCheckboxChange = (index) => {
       const updatedCheckboxData = [...checkboxData]
       updatedCheckboxData[index].state = !updatedCheckboxData[index].state
       setCheckboxData(updatedCheckboxData)
+    }
+
+    const handleCopy = () => {
+      navigator.clipboard.writeText(password);
+      setCopied(true)
+
+      setTimeout(() => {
+        setCopied(false)
+      }, 1000)
     }
 
     const {password, errorMesage, generatePassword} = usePasswordGenerator()
@@ -26,7 +36,7 @@ export default function App() {
       <div className="container">
         {password && <div className="header">
           <div className="title">{password}</div>
-          <button className="copy-btn" onClick={() => {}}>Copy</button>
+          <button className="copy-btn" onClick={handleCopy}>{copied ? "Copied" : "Copy"}</button>
         </div>}
         <div className="character-length">
           <span>
