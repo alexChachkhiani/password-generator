@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css'
-import usePasswordGenerator from './Hooks/usePasswordGenerator';
+import usePasswordGenerator from "./Hooks/usePasswordGenerator";
 import StrengthChecker from './Components/StrengthChecker';
 
 export default function App() {
