@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css'
-import usePasswordGenerator from './hooks/usePasswordGenerator';
+import usePasswordGenerator from './Hooks/usePasswordGenerator';
+import StrengthChecker from './Components/StrengthChecker';
 
 export default function App() {
 
@@ -45,7 +46,7 @@ export default function App() {
           </span>
           <input 
           type="range" 
-          min="8"
+          min="5"
           max="25"
           value={length}
           onChange={(event) => setLength(event.target.value)} 
@@ -59,7 +60,9 @@ export default function App() {
             </div>
           })}
         </div>
-
+        
+        <StrengthChecker password={password}/>
+        
         {errorMesage && <div className="error-message">{errorMesage}</div>}
 
         <button className="generate-btn" onClick={() => generatePassword(checkboxData, length)}>Generate Button</button>
